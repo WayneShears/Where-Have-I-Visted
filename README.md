@@ -1,7 +1,7 @@
 # Where-Have-I-Visted
 A tool where a user can enter a place they have visited and submit the data to a MySQL database using PHP. The map is generated using Google Maps v3 API.
 
-#Using with multiple communites
+#Using in a community with multiple users
 
 This can be easily used in a community with multiple users. As this is how I am using it. I have just made a few changes to make it a more stand alone version.
 
