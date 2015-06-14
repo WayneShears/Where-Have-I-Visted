@@ -22,16 +22,21 @@ if ($conn->connect_error) {
        }
     }
 ?>
-<!DOCTYPE html >
-  <head>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="initial-scale=1.0, user-scalable=no" name="viewport">
+    <meta content="text/html; charset=utf-8" http-equiv="content-type">
+
     <title>Where have I been</title>
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
-<!--Google search -->
-<script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places" type="text/javascript"></script>
+    <script src="https://maps.googleapis.com/maps/api/js" type=
+    "text/javascript"></script><!--Google search -->
+
+    <script src=
+    "http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"
+    type="text/javascript"></script>
     <script type="text/javascript">
-    //<![CDATA[
+//<![CDATA[
 
     var customIcons = {
       1: {
@@ -62,7 +67,7 @@ if ($conn->connect_error) {
           var point = new google.maps.LatLng(
               parseFloat(markers[i].getAttribute("lat")),
               parseFloat(markers[i].getAttribute("lng")));
-          var html = "<b>" + name + "</b> <br/> <small><a href='delete.php?id=" + address + "'>Remove Marker</a>";
+          var html = "<b>" + name + "<\/b> <br/> <small><a href='delete.php?id=" + address + "'>Remove Marker<\/a>";
           var icon = customIcons[type] || {};
           var marker = new google.maps.Marker({
             map: map,
@@ -96,7 +101,7 @@ if ($conn->connect_error) {
       function resizeMap(map) {
     google.maps.event.trigger(map, 'resize');
     mapResized = true;
-}
+    }
 
       request.open('GET', url, true);
       request.send(null);
@@ -105,9 +110,9 @@ if ($conn->connect_error) {
     function doNothing() {}
 
     $(window).load(function(){
-initialize();
-});
-$(function() {
+    initialize();
+    });
+    $(function() {
     $("#expand-map").click(function() {
         $("#map-canvas").animate({"height" : "1000000px"}, 500,function(){
         //google.maps.event.trigger(map, "bounds_changed");
@@ -115,36 +120,46 @@ $(function() {
         });
         
     });
-});
+    });
 
-  </script>
+    </script>
+</head>
 
-  </head>
+<body onload="load()">
+    <!-- <div id="map" style="width: 600px; height: 350px"></div>-->
 
-  <body onload="load()">
-   <!-- <div id="map" style="width: 600px; height: 350px"></div>-->
-   <div id="map-canvas" style="width:1070px;height:300px;">test</div>
-<form class="form-inline" role="form" action="<?php echo $_SERVER['REQUEST_URI'];?>" method="post">	
-		<div class="form-group">
-			<label for="place">Place I</label>		
-				<select class="form-control" name="option">
-					<option value="1">have been to</option>
-					<option value="2">would like to visit</option>
-				</select>
-		</div>
-<div class="form-group">
-      <input id="searchTextField" class="form-control" type="text" size="50" placeholder="Enter a location" autocomplete="on" runat="server" />  
-      <input type="hidden" id="city2" name="city2" />
-      <input type="hidden" id="cityLat" name="cityLat" />
-      <input type="hidden" id="cityLng" name="cityLng" />
-		</div>
-		<div class="form-group">
-			<input type="submit" value="Update My Map" class="btn btn-default"> 
-		</div>
-	</form>
+    <div id="map-canvas" style="width:1070px;height:300px;">
+        test
+    </div>
 
-<script type="text/javascript">
-    function initialize() {
+    <form action="%3C?php%20echo%20$_SERVER['REQUEST_URI'];?%3E" class=
+    "form-inline" method="post">
+        <div class="form-group">
+            <label for="place">Place I</label> <select class="form-control"
+            name="option">
+                <option value="1">
+                    have been to
+                </option>
+
+                <option value="2">
+                    would like to visit
+                </option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <input autocomplete="on" class="form-control" id="searchTextField"
+            placeholder="Enter a location" size="50" type="text"> <input id=
+            "city2" name="city2" type="hidden"> <input id="cityLat" name=
+            "cityLat" type="hidden"> <input id="cityLng" name="cityLng" type=
+            "hidden">
+        </div>
+
+        <div class="form-group">
+            <input class="btn btn-default" type="submit" value="Update My Map">
+        </div>
+    </form><script type="text/javascript">
+        function initialize() {
         var input = document.getElementById('searchTextField');
         var autocomplete = new google.maps.places.Autocomplete(input);
         google.maps.event.addListener(autocomplete, 'place_changed', function () {
@@ -155,10 +170,9 @@ $(function() {
         });
     }
     google.maps.event.addDomListener(window, 'load', initialize); 
-</script>
-  </body>
-  <script>
-    google.maps.event.trigger(map, 'resize');
-  </script>
-
+    </script>
+    <script>
+        google.maps.event.trigger(map, 'resize');
+    </script> 
+</body>
 </html>
