@@ -1,6 +1,6 @@
 <?php
 $servername = "myServerName";
 $username="myUsername";
-$password=",mySQLUserName";
+$password="mySQLUserName";
 $database="myDataBaseName";
 ?>
